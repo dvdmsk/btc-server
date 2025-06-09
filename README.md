@@ -10,7 +10,7 @@
 
 ## 📦 Repository
 
-- 📁 [GitHub Repo](https://github.com/your-username/your-repo-name) (замініть на посилання на ваш репозиторій)
+- 📁 [GitHub Repo](https://github.com/dvdmsk/btc-server) (замініть на посилання на ваш репозиторій)
 
 
 ## ✨ Features
@@ -27,7 +27,7 @@
 1. **Клонуйте репозиторій**
 
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git
+    git clone https://github.com/dvdmsk/btc-server.git
     cd your-repo-name
     ```
 
