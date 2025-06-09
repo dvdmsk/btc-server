@@ -69,12 +69,10 @@ function generateFullJSON(startTimestamp, interval, count) {
 http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
 
-  // Обов’язкові CORS-заголовки
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "*");
 
-  // Обробка preflight
   if (req.method === "OPTIONS") {
     res.writeHead(204);
     res.end();
@@ -95,4 +93,4 @@ http.createServer((req, res) => {
     res.writeHead(404);
     res.end("Not found");
   }
-}).listen(3000, () => console.log("✅ Server: http://localhost:3000/price/btc"));
+}).listen(3000, () => console.log("Server: http://localhost:3000/price/btc"));
