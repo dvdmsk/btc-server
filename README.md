@@ -39,10 +39,10 @@
 
 3. **Зробіть запит до API**
 
-    Відкрийте у браузері або за допомогою curl:
+    Відкрийте у браузері або за допомогою url:
     
     ```http
-    GET http://localhost:3000/price/btc?id=1&time_start=1749384292&interval=5m&count=288
+    http://localhost:3000/price/btc?id=1&time_start=1749384292&interval=5m&count=288
     ```
     
     **Параметри:**
