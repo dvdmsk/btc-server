@@ -10,7 +10,7 @@
 
 ## 📦 Repository
 
-- 📁 [GitHub Repo](https://github.com/dvdmsk/btc-server) (замініть на посилання на ваш репозиторій)
+- 📁 [GitHub Repo](https://github.com/dvdmsk/btc-server) 
 
 
 ## ✨ Features
