@@ -68,7 +68,6 @@ function generateFullJSON(startTimestamp, interval, count) {
 
 http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
-
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "*");
