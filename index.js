@@ -92,4 +92,4 @@ http.createServer((req, res) => {
     res.writeHead(404);
     res.end("Not found");
   }
-}).listen(3000, () => console.log("✅ Server: http://localhost:3000/price/btc"));
+}).listen(3000, () => console.log("Server: http://localhost:3000/price/btc"));
