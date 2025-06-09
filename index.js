@@ -6,10 +6,23 @@ function generateQuotes(startTimestamp, interval, count) {
   const minPrice = 1000;
   const maxPrice = 10000;
 
+  function calculateInterval (interval_) {
+    const time = interval_.match(/(\d+)(\w+)/);
+
+    switch(time[2]) {
+      case 'm':
+        return +time[1] * 60 * 1000;
+      case 'h':
+        return +time[1] * 60 * 60 * 1000;
+      case 'd':
+        return +time[1] * 24 * 60 * 60 * 1000;
+    }
+  };
+
   for (let i = 0; i < count; i++) {
-    const time = new Date(startTimestamp + i * interval * 60 * 1000);
+    const time = new Date(startTimestamp + i * calculateInterval(interval));
     const percent = i / count;
-    const price = minPrice + (maxPrice - minPrice) * percent;
+    const price = Math.random() * 10000 + 1000;
 
     quotes.push({
       timestamp: time.toISOString(),
@@ -68,13 +81,10 @@ function generateFullJSON(startTimestamp, interval, count) {
 
 http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
-
-  // Обов’язкові CORS-заголовки
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "*");
 
-  // Обробка preflight
   if (req.method === "OPTIONS") {
     res.writeHead(204);
     res.end();
@@ -82,17 +92,17 @@ http.createServer((req, res) => {
   }
 
   if (parsedUrl.pathname === "/price/btc") {
-    const { time_start, interval = 5, count = 288 } = parsedUrl.query;
+    const { time_start, interval = '5m', count = 288 } = parsedUrl.query;
 
     const start = time_start
       ? parseInt(time_start, 10) * 1000
       : Date.now();
 
-    const response = generateFullJSON(start, parseInt(interval, 10), parseInt(count, 10));
+    const response = generateFullJSON(start, interval, parseInt(count, 10));
     res.writeHead(200, { "Content-Type": "application/json" });
     res.end(JSON.stringify(response));
   } else {
     res.writeHead(404);
     res.end("Not found");
   }
-}).listen(3000, () => console.log("✅ Server: http://localhost:3000/price/btc"));
+}).listen(3000, () => console.log("Server: http://localhost:3000/price/btc"));
